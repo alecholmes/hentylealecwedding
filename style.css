@@ -1,0 +1,199 @@
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Global Body Styles */
+body {
+  font-family: 'Open Sans', sans-serif;
+  color: #333;
+  line-height: 1.6;
+  background-color: #f9f9f9;
+}
+
+/* 
+  Header with Aspect Ratio Trick:
+  - The pseudo-element (::before) with "padding-top" forces the container
+    to a specific aspect ratio.
+  - background-size: 100% auto ensures the entire image is visible 
+    horizontally without cropping its height.
+*/
+header {
+  position: relative;      /* So we can position .header-content absolutely */
+  width: 100%;
+  background: 
+    url("ch_cropped_2.jpg") 
+    center 
+    no-repeat;
+  background-size: 100% auto; 
+  background-color: #c0c2b7;  /* Fallback color if the image doesn’t fill vertically */
+}
+
+header::before {
+  content: "";
+  display: block;
+  /* Adjust this percentage to match your image’s aspect ratio.
+     E.g. 1200x600 = 2:1 => 50%. If your image is more square, 
+     you might set 75% or 100%. */
+/*  padding-top: 50%; */
+  padding-top: 40%; 
+}
+
+/* Absolutely position the text in the header */
+.header-content {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+/*  color: #fff;*/
+  color: #b5875f;
+}
+
+/* Large Heading in Header */
+.header-content h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Subheading in Header */
+.header-content p {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+/* Section Layout */
+section {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* Section Headings */
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+p {
+  margin-bottom: 0.75rem; /* or any other value you prefer */
+}
+
+a {
+	color: #b5875f;
+}
+
+/* RSVP / Contact Form */
+.rsvp-form form {
+  background: #fff;
+  padding: 1.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Form Group Layout */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+/* 
+  Labels 
+  (we use block or inline-block to ensure spacing and control)
+*/
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+/* Radio Buttons */
+.radio-group {
+  display: inline-flex; 
+  align-items: center; 
+  margin-right: 1rem;
+  cursor: pointer; 
+}
+
+/* Hide default radio circle, then style with a custom approach (optional) */
+.radio-group input[type="radio"] {
+  /* Option 1: Minimal styling (just default radio look, possibly scaled up) */
+  margin-right: 0.5rem;
+  transform: scale(1.2);
+  
+  /*
+    Option 2: If you want a fully custom radio button with pseudo-elements,
+    you'd hide the real radio input (opacity: 0; position: absolute;)
+    and style the label ::before. 
+    But for simplicity, we'll just scale the default radio.
+  */
+}
+
+/* Text next to the radio button */
+.radio-group span {
+  font-size: 1rem;
+  user-select: none; /* Prevent accidental text selection when clicking */
+}
+
+/* Inputs and Textarea */
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: 'Open Sans', sans-serif;
+  margin-bottom: 0.5rem; /* Slight spacing below each field */
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #0066cc;
+}
+
+/* Submit Button */
+.rsvp-form button {
+  background-color: #0066cc;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 700;
+  margin-top: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.rsvp-form button:hover {
+  background-color: #005bb5;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+  .header-content h1 {
+    font-size: 2rem;
+  }
+  .header-content p {
+    font-size: 1.2rem;
+  }
+  section {
+    margin: 1rem auto;
+  }
+}

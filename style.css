@@ -47,10 +47,11 @@ header::before {
   top: 0; left: 0; right: 0; bottom: 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
 /*  color: #fff;*/
-  color: #b5875f;
+/*  color: #b5875f;*/
+  color: #b93084;
 }
 
 /* Large Heading in Header */
@@ -117,7 +118,7 @@ a {
   display: inline-flex; 
   align-items: center; 
   margin-right: 1rem;
-  cursor: pointer; 
+  cursor: pointer;
 }
 
 /* Hide default radio circle, then style with a custom approach (optional) */

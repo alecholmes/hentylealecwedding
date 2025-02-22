@@ -15,6 +15,7 @@
       <header>
          <!-- This .header-content is absolutely positioned on top of the background -->
          <div class="header-content">
+            <h1>&nbsp;</h1>
             <h1>Hentyle &amp; Alec</h1>
             <h1>Wedding Celebration</h1>
          </div>
@@ -55,7 +56,7 @@
          
              try {
                  // Hash the input value
-                 const hash = await hashInput(inputValue);
+                 const hash = await hashInput(inputValue.toLowerCase().trim());
                  const url = `https://alechentylewedding.s3.us-east-1.amazonaws.com/${hash}.html`;
 
                  console.log('Loading', url);

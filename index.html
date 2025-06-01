@@ -4,6 +4,7 @@
       <meta charset="UTF-8" />
       <title>Hentyle and Alec Wedding Celebration</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="robots" content="noindex">
       <!-- Link to your CSS file -->
       <link rel="stylesheet" href="style.css" />
       <!-- Google Fonts (Optional) -->
@@ -45,18 +46,11 @@
                  .map(byte => byte.toString(16).padStart(2, '0'))
                  .join('');
          }
-         
-         document.getElementById('launcher').addEventListener('submit', async (event) => {
-             event.preventDefault();
-         
-             const textInput = document.getElementById('textInput');
-             const inputValue = textInput.value;
-         
-             if (!inputValue) return;
-         
-             try {
+
+         async function loadContent(code) {
+            try {
                  // Hash the input value
-                 const hash = await hashInput(inputValue.toLowerCase().trim());
+                 const hash = await hashInput(code.toLowerCase().trim());
                  const url = `https://alechentylewedding.s3.us-east-1.amazonaws.com/${hash}.html`;
 
                  console.log('Loading', url);
@@ -76,7 +70,24 @@
                  // Clear the text box in case of an error
                  textInput.value = '';
              }
+         }
+         
+         document.getElementById('launcher').addEventListener('submit', async (event) => {
+             event.preventDefault();
+         
+             const textInput = document.getElementById('textInput');
+             const inputValue = textInput.value;
+         
+             if (!inputValue) return;
+
+             loadContent(inputValue);
          });
+
+         const urlParams = new URLSearchParams(window.location.search);
+         const code = urlParams.get('code');
+         if(code) {
+            loadContent(code);
+         }
       </script>
    </body>
 </html>
